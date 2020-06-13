@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+// Setup API KEY via firebase console
 const KEY = process.env.REACT_APP_API_KEY;
-
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START,
