@@ -1,5 +1,17 @@
 import * as actionTypes from "./actionTypes";
-import orders from "../../axios-orders";
+
+export const setIngredients = (ingredients) => {
+  return {
+    type: actionTypes.SET_INGREDIENTS,
+    payload: ingredients,
+  };
+};
+
+export const fetchIngredientsFailed = () => {
+  return {
+    type: actionTypes.FETCH_INGREDIENTS_FAILED,
+  };
+};
 
 export const addIngredient = (name) => {
   return {
@@ -16,19 +28,7 @@ export const removeIngredient = (name) => {
 };
 
 export const initIngredients = () => {
-  return (dispatch) => {
-    orders
-      .get("https://react-burger-builder-b805f.firebaseio.com/ingredients.json")
-      .then((response) => {
-        dispatch({
-          type: actionTypes.SET_INGREDIENTS,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: actionTypes.FETCH_INGREDIENTS_FAILED,
-        });
-      });
+  return {
+    type: actionTypes.INIT_INGREDIENTS,
   };
 };
